@@ -1,0 +1,21 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Configure PC Power Control",
+                "description": "Configure how to control and monitor your PC.",
+                "data": {
+                    "name": "Name",
+                    "mac": "MAC Address (for Wake-on-LAN)",
+                    "ip": "IP Address (for status monitoring)"
+                }
+            }
+        },
+        "error": {
+            "empty_config": "At least one of MAC or IP must be provided.",
+            "invalid_mac": "Invalid MAC address format.",
+            "invalid_ip": "Invalid IP address format."
+        }
+    },
+    "title": "PC Power Control"
+}

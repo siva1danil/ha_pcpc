@@ -1,0 +1,9 @@
+{
+  "domain": "ha_pcpc",
+  "name": "PC Power Control",
+  "version": "1.0.0",
+  "codeowners": ["@siva1danil"],
+  "requirements": ["wakeonlan"],
+  "config_flow": true,
+  "iot_class": "local_push"
+}
