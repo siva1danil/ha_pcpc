@@ -1,4 +1,5 @@
 <div align="center">
+  <img src="custom_components/ha_pcpc/brand/logo.png" alt="logo" width="120">
   <h3>ha_pcpc</h3>
   <p>Monitor and control your PC via ping and Wake-on-LAN.</p>
 </div>
