@@ -15,8 +15,12 @@ _LOGGER = logging.getLogger(__name__)
 SCAN_INTERVAL = timedelta(seconds=10)
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_entities):
-    data = entry.data
-    model = PCPCModel.from_config(data)
+    try:
+        model = PCPCModel.from_config(entry.data)
+    except ValueError as err:
+        _LOGGER.warning("Removing invalid config entry %s: %s", entry.entry_id, err)
+        hass.async_create_task(hass.config_entries.async_remove(entry.entry_id))
+        return
     entity = PCPCSwitch(model)
     async_add_entities([entity], True)
 
