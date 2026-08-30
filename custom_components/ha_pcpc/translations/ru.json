@@ -17,5 +17,16 @@
             "invalid_ip": "Неверный формат IP-адреса."
         }
     },
+    "exceptions": {
+        "wol_unavailable": {
+            "message": "MAC-адрес для {name} не настроен"
+        },
+        "wol_failed": {
+            "message": "Не удалось отправить Wake-on-LAN пакет для {name}"
+        },
+        "turn_off_not_supported": {
+            "message": "Выключение {name} не поддерживается"
+        }
+    },
     "title": "Управление питанием ПК"
 }

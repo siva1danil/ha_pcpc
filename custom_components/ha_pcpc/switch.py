@@ -5,6 +5,7 @@ from wakeonlan import send_magic_packet
 from homeassistant.components.switch import SwitchEntity
 from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.exceptions import HomeAssistantError, ServiceValidationError
 from homeassistant.helpers.device_registry import DeviceInfo
 from datetime import timedelta
 
@@ -65,12 +66,12 @@ class PCPCSwitch(SwitchEntity):
 
     async def async_turn_on(self, **kwargs):
         if not self._model.mac:
-            return
+            raise ServiceValidationError(translation_domain=DOMAIN, translation_key="wol_unavailable", translation_placeholders={"name": self._model.name})
 
         try:
             send_magic_packet(self._model.mac)
         except Exception as e:
-            _LOGGER.error("Failed to send WoL packet to %s: %s", self._model.mac, e)
+            raise HomeAssistantError(translation_domain=DOMAIN, translation_key="wol_failed", translation_placeholders={"name": self._model.name}) from e
 
     async def async_turn_off(self, **kwargs):
-        _LOGGER.warning("Turn off not supported for %s", self._model.name)
+        raise ServiceValidationError(translation_domain=DOMAIN, translation_key="turn_off_not_supported", translation_placeholders={"name": self._model.name})

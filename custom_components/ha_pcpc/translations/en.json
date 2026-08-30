@@ -17,5 +17,16 @@
             "invalid_ip": "Invalid IP address format."
         }
     },
+    "exceptions": {
+        "wol_unavailable": {
+            "message": "MAC address is not configured for {name}"
+        },
+        "wol_failed": {
+            "message": "Failed to send Wake-on-LAN packet to {name}"
+        },
+        "turn_off_not_supported": {
+            "message": "Turn off is not supported for {name}"
+        }
+    },
     "title": "PC Power Control"
 }
